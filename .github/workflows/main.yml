@@ -2,6 +2,12 @@ name: Build And Release
 
 on:
   workflow_dispatch:
+    inputs:
+      change-log:
+        description: 'Paste Changelog'
+        required: false
+        type: string
+      
 
 jobs:
   build:
@@ -72,6 +78,7 @@ jobs:
         with:
           generate_release_notes: false
           draft: true
+          body: ${{ inputs.change-log }}
           name: ${{ github.event.repository.name }} v${{ env.PLUGIN_VERSION }}-${{ github.run_number }}
           tag_name: ${{ env.PLUGIN_VERSION }}-${{ github.run_number }}+${{ github.run_attempt }}
           files: ${{ github.event.repository.name }}-${{ env.PLUGIN_VERSION }}.jar
