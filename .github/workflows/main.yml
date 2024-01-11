@@ -2,11 +2,6 @@ name: Build And Release
 
 on:
   workflow_dispatch:
-    inputs:
-      change-log:
-        description: 'Paste Changelog'
-        required: false
-        type: string
       
 
 jobs:
